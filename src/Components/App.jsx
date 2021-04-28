@@ -1,10 +1,10 @@
 import "./App.css";
 import LogoAvatar from "./LogoAvatar/LogoAvatar";
 import { makeStyles } from "@material-ui/core/styles";
-import Grid, { GridSpacing } from "@material-ui/core/Grid";
+import Grid from "@material-ui/core/Grid";
 import { styled } from "@material-ui/core/styles";
-import { motion, animate } from "framer-motion";
-import { Typography } from "@material-ui/core";
+import { motion } from "framer-motion";
+import MainContent from "./MainContent/MainContent";
 
 const useStyles = makeStyles({
   root: {
@@ -13,7 +13,13 @@ const useStyles = makeStyles({
   wrapper: {
     height: "calc(100vh - 60px)",
     display: "flex",
-    justifyContent: "flex-start",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  innerMain: {
+    height: "100%",
+    display: "flex",
+    justifyContent: "center",
     alignItems: "center",
   },
 });
@@ -26,11 +32,6 @@ const CustomBackground = styled("div")({
   height: "100%",
   position: "absolute",
   zIndex: -1,
-  // "&::before": {
-  //   content: '"some content"',
-  //   display: "block",
-  //   height: 60,
-  // },
 });
 
 function App() {
@@ -38,7 +39,11 @@ function App() {
   return (
     <div className={`App`}>
       <Grid container className={classes.root}>
-        <Grid item md={7} xs={12} className={classes.wrapper}></Grid>
+        <Grid item md={7} xs={12} className={classes.wrapper}>
+          <Grid item md={10} xs={12} className={classes.innerMain}>
+            <MainContent />
+          </Grid>
+        </Grid>
         <Grid
           item
           component={motion.div}
@@ -56,16 +61,8 @@ function App() {
             }}
             animate={{
               backgroundPosition: ["0 10px", "0 1000px"],
-              // backgroundImage: [
-              //   "radial-gradient(#FFF 1px, #000 1px)",
-              //   "radial-gradient(#000 1px, #000 1px )",
-              // ],
-              // // opacity: [1, 0],
             }}
           />
-
-          {/* <Typography color="secondary">ALALAL</Typography> */}
-
           <LogoAvatar />
         </Grid>
       </Grid>

@@ -35,9 +35,6 @@ const LogoAvatar = () => {
     const image = new Image();
     image.src = base64Logo;
 
-    // canvas.width = window.innerWidth;
-    // canvas.height = window.innerHeight;
-
     canvas.width = 400;
     canvas.height = 400;
 
