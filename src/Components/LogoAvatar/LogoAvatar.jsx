@@ -52,9 +52,7 @@ const LogoAvatar = () => {
     };
 
     window.addEventListener("mousemove", function (event) {
-      mouse.x = isSmall
-        ? event.x - canvas.offsetLeft
-        : event.x - canvas.offsetLeft - window.innerWidth / 1.7;
+      mouse.x =  event.x - canvas.offsetLeft - window.innerWidth / 1.7;
 
       mouse.y = event.y - canvas.offsetTop;
     });
