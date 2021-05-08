@@ -6,11 +6,8 @@ import Grid from "@material-ui/core/Grid";
 import { styled } from "@material-ui/core/styles";
 import { motion } from "framer-motion";
 import MainContent from "./MainContent/MainContent";
-import dashedLine from "./svg/dashed-line-vector.svg";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-
-import LeaderLine from "react-leader-line";
 
 const CustomBackground = styled("div")({
   backgroundImage: "radial-gradient(#FFF 1px, #000 1px)",
@@ -23,37 +20,33 @@ const CustomBackground = styled("div")({
 });
 
 function App() {
-  const [x1, setX1] = useState();
-  const [x2, setX2] = useState();
-  const [y1, setY1] = useState();
-  const [y2, setY2] = useState();
-
   const theme = useTheme();
-  const isSmUp = useMediaQuery(theme.breakpoints.up("sm"));
   const isSmDo = useMediaQuery(theme.breakpoints.down("sm"));
-
-  const pointA = useRef();
-  const pointB = useRef();
-  const line = useRef();
-
-  // useEffect(() => {
-  //   new LeaderLine(pointA.current, pointB.current, {
-  //     dash: { animation: true },
-  //     color: "white ",
-  //     size: 6,
-  //   });
-  // }, []);
+  const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
 
   const useStyles = makeStyles({
     root: {
-      border: isSmUp && "30px solid #0d0d0d",
+      marginTop: "30px",
     },
     wrapper: {
-      height: isSmDo ? "inherit" : "calc(100vh - 60px)",
-      minHeight: isSmDo  && "100vh",
+      minHeight: isSmDo ? "100vh" : "calc(100vh - 60px)",
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
+    },
+    vertOverlay: {
+      width: "30px",
+      height: "100%",
+      position: "fixed",
+      backgroundColor: "#0d0d0d",
+      top: "0",
+    },
+    horizOverlay: {
+      width: "100%",
+      height: "30px",
+      position: "fixed",
+      backgroundColor: "#0d0d0d",
+      left: "0",
     },
     innerMain: {
       height: "100%",
@@ -64,22 +57,12 @@ function App() {
   });
   const classes = useStyles();
   return (
-    <div className={`App`}>
-      <Grid container className={classes.root}>
+    <div className="" className={`App ${classes.root}`}>
+      <Grid container>
         <Grid item md={7} xs={12} className={classes.wrapper}>
           <Grid item xs={12} sm={9} className={classes.innerMain}>
             <div>
               <MainContent />
-              <img
-                src={dashedLine}
-                style={{
-                  maxWidth: "830px",
-                  maxHeight: "260px",
-                  padding: "10px",
-                  overflow: "hidden",
-                  float: "right",
-                }}
-              />
             </div>
           </Grid>
         </Grid>
@@ -90,7 +73,12 @@ function App() {
           md={5}
           xs={12}
           className={classes.wrapper}
-          style={{ position: "relative" }}
+          style={{
+            position: isMdUp ? "fixed" : "relative",
+            right: "7px",
+            top: "30px",
+            width: "100%",
+          }}
         >
           <CustomBackground
             component={motion.div}
@@ -103,9 +91,14 @@ function App() {
               backgroundPosition: ["0 10px", "0 1000px"],
             }}
           />
-          <LogoAvatar />
+          {/* <LogoAvatar /> */}
         </Grid>
       </Grid>
+      isSmUp && (
+      <div className={classes.horizOverlay} style={{ top: "0" }} />
+      <div className={classes.horizOverlay} style={{ bottom: "0" }} />
+      <div className={classes.vertOverlay} style={{ left: "0" }} />
+      <div className={classes.vertOverlay} style={{ right: "0" }} />)
     </div>
   );
 }
