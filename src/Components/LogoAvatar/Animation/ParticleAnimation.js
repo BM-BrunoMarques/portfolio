@@ -58,7 +58,6 @@ export function drawImage(ctx, canvas, mouse, particleArray, png) {
   }
   function init() {
     particleArray = [];
-
     for (var y = 0, y2 = data.height; y < y2; y++) {
       for (var x = 0, x2 = data.width; x < x2; x++) {
         if (data.data[y * 4 * data.width + x * 4 + 3] > 128) {
@@ -79,18 +78,19 @@ export function drawImage(ctx, canvas, mouse, particleArray, png) {
     }
   }
   function animate() {
-    if (canvas.width !== 400 || canvas.height !== 400) {
-      canvas.width = 400;
-      canvas.height = 400;
-    }
+    // if (canvas.width !== 400 || canvas.height !== 400) {
+    //   canvas.width = 400;
+    //   canvas.height = 400;
+    // }
     requestAnimationFrame(animate);
-    ctx.fillStyle = "rgba(255,255,255,.2)";
+    // ctx.fillStyle = "rgba(255,255,255,1)";
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     for (let i = 0; i < particleArray.length; i++) {
       particleArray[i].update();
     }
   }
+
   init();
   animate();
 }

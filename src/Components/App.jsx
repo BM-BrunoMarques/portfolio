@@ -19,6 +19,11 @@ const CustomBackground = styled("div")({
   zIndex: -1,
 });
 
+//this will reset scroll on refreshes
+window.onbeforeunload = function () {
+  window.scrollTo(0, 0);
+};
+
 function App() {
   const theme = useTheme();
   const isSmDo = useMediaQuery(theme.breakpoints.down("sm"));
@@ -50,7 +55,7 @@ function App() {
     },
     innerMain: {
       height: "100%",
-      display: "flex",
+      // display: "flex",
       justifyContent: "center",
       alignItems: "center",
     },
@@ -91,7 +96,7 @@ function App() {
               backgroundPosition: ["0 10px", "0 1000px"],
             }}
           />
-          {/* <LogoAvatar /> */}
+          <LogoAvatar />
         </Grid>
       </Grid>
       isSmUp && (

@@ -8,7 +8,6 @@ import { motion } from "framer-motion";
 
 const useStyles = makeStyles({
   root: {
-    // overflowY: "auto",
     width: "100%",
     padding: "20px 30px",
     position: "relative",
@@ -22,16 +21,16 @@ const MainContent = () => {
       <div className={classes.root}>
         <motion.div className={classes.content}>
           <AboutMe />
-          <div style={{ marginBottom: "100px" }}>
+          <div style={{ margin: "100px 0" }}>
             <FlightAnimation />
           </div>
+          {/* <AboutMe />
           <AboutMe />
           <AboutMe />
           <AboutMe />
           <AboutMe />
           <AboutMe />
-          <AboutMe />
-          <AboutMe />
+          <AboutMe /> */}
         </motion.div>
       </div>
     </>

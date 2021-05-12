@@ -10,16 +10,16 @@ const useStyles = makeStyles({
   root: {
     display: "flex",
     width: "90%",
-    height: "400px",
+    height: "430px",
     overflow: "hidden",
     justifyContent: "center",
     boxShadow: "0 0 89px 0px black",
     borderTop: "1px solid #0f0f0f",
-    padding: "10px",
+    padding: "30px",
   },
   canvas: {
     background: "rgba(0, 0, 0, 0.8)",
-    padding: "15px",
+    padding: "10px",
   },
 });
 
@@ -52,11 +52,12 @@ const LogoAvatar = () => {
     };
 
     window.addEventListener("mousemove", function (event) {
-      mouse.x =  event.x - canvas.offsetLeft - window.innerWidth / 1.7;
-
+      mouse.x = isSmall
+        ? event.x - canvas.offsetLeft
+        : event.x - canvas.offsetLeft - window.innerWidth / 1.7;
       mouse.y = event.y - canvas.offsetTop;
     });
-  });
+  }, []);
 
   return (
     <>

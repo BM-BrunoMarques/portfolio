@@ -23,10 +23,9 @@ const useStyles = makeStyles({
     fill: "none",
     strokeWidth: 5,
   },
-  PortugalText: {
-    fill: "#FFFFFF",
-    fillOpacity: 1,
-    fillRule: "nonzero",
+  svgText: {
+    stroke: "none",
+    fill: "bisque",
   },
 });
 
@@ -36,6 +35,7 @@ const FlightAnimation = () => {
   const svgControls = useAnimation();
   const { scrollY, scrollYProgress } = useViewportScroll();
   const isSmDo = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMdDo = useMediaQuery(theme.breakpoints.down("md"));
   const path = useRef();
   const star = useRef();
   const planeWrap = useRef();
@@ -60,8 +60,9 @@ const FlightAnimation = () => {
   });
 
   useEffect(() => {
-    const curveLength = path.current.getTotalLength();
     scrollYProgress.onRenderRequest(() => {
+      const curveLength = path.current.getTotalLength();
+
       star.current.setAttribute(
         "transform",
         "translate(" +
@@ -78,23 +79,20 @@ const FlightAnimation = () => {
         `rotate(${planeRotation.current})`
       );
     });
-
-    return scrollYProgress.onChange(() => {
-      star.current.setAttribute(
-        "transform",
-        "translate(" +
-          (path.current.getPointAtLength(curveLength * svgPathY.current).x +
-            10) +
-          "," +
-          (path.current.getPointAtLength(curveLength * svgPathY.current).y +
-            10) +
-          ")"
-      );
-    });
-  }, [scrollYProgress]);
+  }, [path]);
 
   useEffect(() => {
     const curveLength = path.current.getTotalLength();
+
+    star.current.setAttribute(
+      "transform",
+      "translate(" +
+        (path.current.getPointAtLength(curveLength * svgPathY.current).x - 50) +
+        "," +
+        (path.current.getPointAtLength(curveLength * svgPathY.current).y - 22) +
+        ")" +
+        "scale(0.12)"
+    );
 
     end.current.setAttribute(
       "transform",
@@ -125,7 +123,11 @@ const FlightAnimation = () => {
       className={classes.svgPath}
       style={{ y: yScroll }}
     >
-      <g transform="translate(-57.695 -32.22)">
+      <g
+        transform={`${
+          isMdDo ? "translate(-97.695 -82.22)" : "translate(-57.695 -32.22)"
+        } ${isMdDo ? "scale(1.8)" : "scale(1)"}`}
+      >
         {/* Portugal - START */}
         <motion.path
           d={SVGportugalGeography}
@@ -139,10 +141,11 @@ const FlightAnimation = () => {
           strokeOpacity={1}
           initial={{ pathLength: 0 }}
           animate={{ pathLength: 1 }}
-          transition={{ delay: 0.4, duration: 1.2 }}
+          transition={{ delay: 0.4, duration: 0.9 }}
         />
         <motion.path
           d={SVGportugalText}
+          className={classes.svgText}
           transform="matrix(.26458 0 0 .26458 57.695 32.22)"
           stroke="#FFF"
           fill="#FFF"
@@ -160,45 +163,52 @@ const FlightAnimation = () => {
       {/* Portugal - end */}
 
       {/* CALI - START */}
-      <motion.path
-        id="CaliBeanz"
-        ref={end}
-        fill="none"
-        stroke="#FFF"
-        strokeWidth={2.147}
-        strokeLinecap="butt"
-        strokeLinejoin="miter"
-        strokeMiterlimit={4}
-        strokeDasharray="none"
-        strokeOpacity={1}
-        initial={{ pathLength: 0 }}
-        animate={{ pathLength: 1 }}
-        transition={{ delay: 0.4, duration: 1.2 }}
-        d={SVGcaliforniaGeography}
-      />
-      <motion.path
-        ref={endText}
-        d={SVGcaliforniaText}
-        stroke="#FFF"
-        fill="#FFF"
-        strokeWidth={0.7}
-        strokeLinecap="butt"
-        strokeLinejoin="miter"
-        strokeMiterlimit={4}
-        strokeDasharray="none"
-        strokeOpacity={1}
-        initial={{ pathLength: 0, opacity: 0.5 }}
-        animate={{ pathLength: 1, opacity: 1 }}
-        transition={{ duration: 0.4 }}
-      />
+      <g
+        transform={`${
+          isMdDo ? "translate(-627.695 -202.22)" : "translate(-37.695 -2.22)"
+        } ${isMdDo ? "scale(1.8)" : "scale(1)"}`}
+      >
+        <motion.path
+          ref={end}
+          d={SVGcaliforniaGeography}
+          fill="none"
+          stroke="#FFF"
+          strokeWidth={2.147}
+          strokeLinecap="butt"
+          strokeLinejoin="miter"
+          strokeMiterlimit={4}
+          strokeDasharray="none"
+          strokeOpacity={1}
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ delay: 0.4, duration: 0.9 }}
+        />
+        <motion.path
+          ref={endText}
+          d={SVGcaliforniaText}
+          className={classes.svgText}
+          stroke="#FFF"
+          fill="#FFF"
+          strokeWidth={0.7}
+          strokeLinecap="butt"
+          strokeLinejoin="miter"
+          strokeMiterlimit={4}
+          strokeDasharray="none"
+          strokeOpacity={1}
+          initial={{ pathLength: 0, opacity: 0.5 }}
+          animate={{ pathLength: 1, opacity: 1 }}
+          transition={{ duration: 0.4 }}
+        />
+      </g>
       {/* CALI - END */}
 
       <motion.g
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.4, duration: 0.2 }}
+        transition={{ delay: 1, duration: 0.2 }}
       >
         <motion.path
+          ref={path}
           id="track"
           initial={{ pathLength: 0, pathOffset: 0 }}
           style={{ pathLength: svgPathY }}
@@ -206,7 +216,6 @@ const FlightAnimation = () => {
           d="M 45.833 150.5 C 52.833 178.667 99 271.334 257 271.334 S 475.5 81 375.5 81 S 305 271.334 770 271.334"
           stroke="#FFFFFF"
           fill="none"
-          ref={path}
         />
       </motion.g>
       <motion.g
