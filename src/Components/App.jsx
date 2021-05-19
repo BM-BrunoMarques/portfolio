@@ -27,6 +27,7 @@ window.onbeforeunload = function () {
 function App() {
   const theme = useTheme();
   const isSmDo = useMediaQuery(theme.breakpoints.down("sm"));
+  const isSmUp = useMediaQuery(theme.breakpoints.up("sm"));
   const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
 
   const useStyles = makeStyles({
@@ -99,11 +100,14 @@ function App() {
           <LogoAvatar />
         </Grid>
       </Grid>
-      isSmUp && (
-      <div className={classes.horizOverlay} style={{ top: "0" }} />
-      <div className={classes.horizOverlay} style={{ bottom: "0" }} />
-      <div className={classes.vertOverlay} style={{ left: "0" }} />
-      <div className={classes.vertOverlay} style={{ right: "0" }} />)
+      {isSmUp && (
+        <>
+          <div className={classes.horizOverlay} style={{ top: "0" }} />
+          <div className={classes.horizOverlay} style={{ bottom: "0" }} />
+          <div className={classes.vertOverlay} style={{ left: "0" }} />
+          <div className={classes.vertOverlay} style={{ right: "0" }} />
+        </>
+      )}
     </div>
   );
 }
