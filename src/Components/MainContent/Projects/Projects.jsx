@@ -16,6 +16,7 @@ import postfeet from "./gif/postfeet.gif";
 import mnm from "./gif/mnm.gif";
 import chippers from "./gif/chippers.gif";
 import wwm from "./gif/chippers.gif";
+import nswomen from "./gif/nswomen.gif";
 
 import LazyImage from "./LazyImage/LazyImage";
 
@@ -74,6 +75,7 @@ const Projects = () => {
           <LazyImage key={8} width={464} height={390} src={mnm} />
           <LazyImage key={9} width={464} height={390} src={wwm} />
           <LazyImage key={9} width={464} height={390} src={apcer} />
+          <LazyImage key={9} width={464} height={390} src={nswomen} />
         </div>
       </AnimatePresence>
 
