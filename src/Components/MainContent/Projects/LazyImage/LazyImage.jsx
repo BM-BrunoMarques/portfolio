@@ -19,9 +19,9 @@ const LazyImage = ({ width, height, src, ...rest }) => {
     >
       {inView && (
         <motion.img
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ type: "spring", duration: 1.3}}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ type: "spring", duration: 1.3 }}
           {...rest}
           src={src}
           style={{ maxWidth: "100%" }}
