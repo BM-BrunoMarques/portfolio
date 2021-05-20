@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const LazyImage = ({ width, height, src, ...rest }) => {
   const [ref, inView] = useInView({
-    triggerOnce: false,
+    triggerOnce: true,
     rootMargin: "0px 0px",
   });
 
@@ -14,14 +14,16 @@ const LazyImage = ({ width, height, src, ...rest }) => {
       data-inview={inView}
       style={{
         position: "relative",
-        paddingBottom: `${(height / width) * 15}%`,
+        maxWidth: "440px",
+        marginBottom: 35,
+        maxHeight: height,
       }}
     >
       {inView && (
         <motion.img
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ type: "spring", duration: 1.3 }}
+          initial={{ opacity: 0}}
+          animate={{ opacity: 1}}
+          transition={{ type: "spring", duration: 1.3, delay: 0.3 }}
           {...rest}
           src={src}
           style={{ maxWidth: "100%" }}

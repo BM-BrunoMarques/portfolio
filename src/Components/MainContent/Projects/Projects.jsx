@@ -15,7 +15,7 @@ import apcer from "./gif/apcer.gif";
 import postfeet from "./gif/postfeet.gif";
 import mnm from "./gif/mnm.gif";
 import chippers from "./gif/chippers.gif";
-import wwm from "./gif/chippers.gif";
+import wwm from "./gif/wwm.gif";
 import nswomen from "./gif/nswomen.gif";
 
 import LazyImage from "./LazyImage/LazyImage";
@@ -65,17 +65,17 @@ const Projects = () => {
             flexDirection: "column",
           }}
         >
-          <LazyImage key={1} width={464} height={390} src={homeLovers} />
-          <LazyImage key={2} width={464} height={390} src={stamina} />
           <LazyImage key={3} width={464} height={390} src={ddbc} />
+          <LazyImage key={2} width={464} height={390} src={stamina} />
+          <LazyImage key={1} width={464} height={390} src={homeLovers} />
           <LazyImage key={4} width={464} height={390} src={puroV} />
           <LazyImage key={5} width={464} height={390} src={jnabais} />
           <LazyImage key={6} width={464} height={390} src={chippers} />
           <LazyImage key={7} width={464} height={390} src={postfeet} />
           <LazyImage key={8} width={464} height={390} src={mnm} />
+          <LazyImage key={10} width={464} height={390} src={apcer} />
           <LazyImage key={9} width={464} height={390} src={wwm} />
-          <LazyImage key={9} width={464} height={390} src={apcer} />
-          <LazyImage key={9} width={464} height={390} src={nswomen} />
+          <LazyImage key={11} width={464} height={390} src={nswomen} />
         </div>
       </AnimatePresence>
 
