@@ -18,7 +18,7 @@ import chippers from "./gif/chippers.gif";
 import wwm from "./gif/wwm.gif";
 import nswomen from "./gif/nswomen.gif";
 
-import LazyImage from "./LazyImage/LazyImage";
+import LazyProject from "./LazyProject/LazyProject";
 
 const Projects = () => {
   const theme = useTheme();
@@ -65,17 +65,17 @@ const Projects = () => {
             flexDirection: "column",
           }}
         >
-          <LazyImage key={3} width={464} height={390} src={ddbc} />
-          <LazyImage key={2} width={464} height={390} src={stamina} />
-          <LazyImage key={1} width={464} height={390} src={homeLovers} />
-          <LazyImage key={4} width={464} height={390} src={puroV} />
-          <LazyImage key={5} width={464} height={390} src={jnabais} />
-          <LazyImage key={6} width={464} height={390} src={chippers} />
-          <LazyImage key={7} width={464} height={390} src={postfeet} />
-          <LazyImage key={8} width={464} height={390} src={mnm} />
-          <LazyImage key={10} width={464} height={390} src={apcer} />
-          <LazyImage key={9} width={464} height={390} src={wwm} />
-          <LazyImage key={11} width={464} height={390} src={nswomen} />
+          <LazyProject key={3} width={464} height={390} src={ddbc} />
+          <LazyProject key={2} width={464} height={390} src={stamina} />
+          <LazyProject key={1} width={464} height={390} src={homeLovers} />
+          <LazyProject key={4} width={464} height={390} src={puroV} />
+          <LazyProject key={5} width={464} height={390} src={jnabais} />
+          <LazyProject key={6} width={464} height={390} src={chippers} />
+          <LazyProject key={7} width={464} height={390} src={postfeet} />
+          <LazyProject key={8} width={464} height={390} src={mnm} />
+          <LazyProject key={10} width={464} height={390} src={apcer} />
+          <LazyProject key={9} width={464} height={390} src={wwm} />
+          <LazyProject key={11} width={464} height={390} src={nswomen} />
         </div>
       </AnimatePresence>
 
