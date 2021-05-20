@@ -63,6 +63,7 @@ const LazyProject = ({ width, height, src, ...rest }) => {
         width: "100%",
         display: "flex",
         justifyContent: "center",
+        marginBottom: "80px",
       }}
       initial={{ y: !hasShown ? 50 : 0 }}
       animate={{
@@ -71,7 +72,7 @@ const LazyProject = ({ width, height, src, ...rest }) => {
         paddingBottom: inView ? "60px" : 0,
         y: !hasShown ? 50 : 0,
       }}
-      transition={{ type: "anticipate", duration: 0.4, delay: 0.2 }}
+      transition={{ type: "anticipate", duration: 0.4, delay: 0.1 }}
     >
       <div
         data-inview={inView}
