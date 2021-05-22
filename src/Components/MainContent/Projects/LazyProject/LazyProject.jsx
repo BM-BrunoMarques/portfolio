@@ -145,7 +145,7 @@ const LazyProject = ({ width, height, src, ...rest }) => {
             > */}
               <ReactPlayer
                 url={ddbc}
-                playing={false}
+                playing={inView}
                 controls
                 loop
                 muted
