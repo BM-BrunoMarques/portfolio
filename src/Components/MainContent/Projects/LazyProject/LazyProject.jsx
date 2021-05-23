@@ -13,6 +13,7 @@ const LazyProject = ({ width, height, src, ...rest }) => {
   const wrapper = useRef();
   const [hasShown, setHasShown] = useState(false);
   const theme = useTheme();
+  const videoPlayer = useRef();
 
   const [isPlay, setIsPlay] = useState(false);
 
@@ -27,39 +28,6 @@ const LazyProject = ({ width, height, src, ...rest }) => {
     // rootMargin: "300px",
   });
 
-  const useStyles = makeStyles({
-    // loadingImg: {
-    //   background: "linear-gradient(270deg, #121212, #5a5b5b)",
-    //   backgroundSize: "400% 400%",
-    //   WebkitAnimation: "AnimationName 1s ease infinite",
-    //   MozAnimation: "AnimationName 1s ease infinite",
-    //   OAnimation: "AnimationName 1s ease infinite",
-    //   animation: "AnimationName 1s ease infinite",
-    // },
-    // "@-webkit-keyframes AnimationName": {
-    //   "0%": { backgroundPosition: "0% 50%" },
-    //   "50%": { backgroundPosition: "100% 50%" },
-    //   "100%": { backgroundPosition: "0% 50%" },
-    // },
-    // "@-moz-keyframes AnimationName": {
-    //   "0%": { backgroundPosition: "0% 50%" },
-    //   "50%": { backgroundPosition: "100% 50%" },
-    //   "100%": { backgroundPosition: "0% 50%" },
-    // },
-    // "@-o-keyframes AnimationName": {
-    //   "0%": { backgroundPosition: "0% 50%" },
-    //   "50%": { backgroundPosition: "100% 50%" },
-    //   "100%": { backgroundPosition: "0% 50%" },
-    // },
-    // "@keyframes AnimationName": {
-    //   "0%": { backgroundPosition: "0% 50%" },
-    //   "50%": { backgroundPosition: "100% 50%" },
-    //   "100%": { backgroundPosition: "0% 50%" },
-    // },
-  });
-
-  const classes = useStyles();
-
   const variants = {
     initialWrap: {
       y: 140,
@@ -69,12 +37,12 @@ const LazyProject = ({ width, height, src, ...rest }) => {
       transition: {
         type: "anticipate",
         duration: 1,
+        delay: !isXs ? 0.45 : 0.15,
+        duration: !isXs ? 0.75 : 0.2,
       },
     },
     changeBg: {
       backgroundColor: inView ? "#090909" : "#000",
-      // paddingTop: inView ? "100px" : 0,
-      // paddingBottom: inView ? "100px" : 0,
       transition: {
         delay: hasShown ? 0.05 : 0.25,
         type: "anticipate",
@@ -88,6 +56,7 @@ const LazyProject = ({ width, height, src, ...rest }) => {
       setHasShown(true);
     }
     setIsPlay(inView);
+    videoPlayer?.current?.seekTo(0);
   }, [inView]);
 
   return (
@@ -99,54 +68,57 @@ const LazyProject = ({ width, height, src, ...rest }) => {
         justifyContent: "center",
         alignItems: "center",
         marginBottom: !isXs ? "150px" : "40px",
-        minHeight: "530px",
+        minHeight: !isXs ? "530px" : "100px",
         flexDirection: "column",
       }}
       variants={variants}
-      animate={["changeBg"]}
     >
       {hasShown && (
-        <motion.div variants={variants} initial="initialWrap" animate="appear">
+        <motion.div
+          variants={variants}
+          initial="initialWrap"
+          animate={["appear", "changeBg"]}
+        >
           <div style={{ width: "100%" }}>
             <Typography color="primary">
-              <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+              <motion.span
+                style={{ display: "block" }}
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.4 }}
+              >
                 work for COMPANY NAME
               </motion.span>
               <br />
-              <motion.span> Description of the work... ... ...</motion.span>
+              <motion.span
+                style={{ display: "block" }}
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.7 }}
+              >
+                Description of the work... ... ...
+              </motion.span>
             </Typography>
           </div>
           <motion.div
             // data-inview={inView}
             style={{
               position: "relative",
-              minHeight: height / 1.2,
+              // minHeight: height / 1.2,
               width: "100%",
             }}
             initial={{ opacity: 0.2 }}
             animate={{ opacity: inView ? 1 : 0.1 }}
+            transition={{
+              delay: !isXs ? 0.45 : 0.15,
+              duration: !isXs ? 0.35 : 0.2,
+            }}
           >
             <>
-              {/* <motion.img
-              
-              exit={{ opacity: 0 }}
-              transition={{ type: "anticipate", duration: 0.8 }}
-              {...rest}
-              src={src}
-              style={{
-                maxWidth: "440px",
-                width: "100%",
-                height: "auto",
-              }}
-            /> */}
-              {/* <motion.div
-              initial={{ opacity: 0.2 }}
-              animate={{ opacity: inView ? 1 : 0.1 }}
-            > */}
               <ReactPlayer
+                ref={videoPlayer}
                 url={ddbc}
                 playing={inView}
-                controls
                 loop
                 muted
                 width="100%"

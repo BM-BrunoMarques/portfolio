@@ -4,7 +4,14 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import LazyLoad from "react-lazy-load";
+
+import {
+  motion,
+  useViewportScroll,
+  useTransform,
+  useSpring,
+} from "framer-motion";
+
 import { AnimatePresence } from "framer-motion";
 import stamina from "./gif/stamina.gif";
 import homeLovers from "./gif/homelovers.gif";
@@ -25,6 +32,14 @@ const Projects = () => {
   const isXs = useMediaQuery(theme.breakpoints.down("xs"));
   const isDoMd = useMediaQuery(theme.breakpoints.down("md"));
 
+  const { scrollY } = useViewportScroll();
+  const y1 = useTransform(scrollY, [0, 350], [0, 250]);
+
+  const yScroll = useSpring(y1, {
+    stiffness: 200,
+    damping: 90,
+  });
+
   const useStyles = makeStyles({
     root: {
       width: "100%",
@@ -37,10 +52,9 @@ const Projects = () => {
     },
   });
 
-  const classes = useStyles();
 
   return (
-    <div>
+    <motion.div style={{ y: yScroll }}>
       <Typography
         color="primary"
         variant="h4"
@@ -80,7 +94,7 @@ const Projects = () => {
       </AnimatePresence>
 
       <Typography color="primary" variant="h5" textAnchor="middle"></Typography>
-    </div>
+    </motion.div>
   );
 };
 

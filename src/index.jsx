@@ -30,6 +30,17 @@ const theme = createMuiTheme({
   },
 });
 
+theme.typography.h5 = {
+  fontSize: "1.2rem",
+  "@media (max-width:1920px)": {
+    fontSize: "1.1rem",
+    fontWeight: "500",
+  },
+  // [theme.breakpoints.up('md')]: {
+  //   fontSize: '2.4rem',
+  // },
+};
+
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>

@@ -29,6 +29,7 @@ function App() {
   const isSmDo = useMediaQuery(theme.breakpoints.down("sm"));
   const isSmUp = useMediaQuery(theme.breakpoints.up("sm"));
   const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
+  const [hasLoaded, setHasLoaded] = useState(false);
 
   const useStyles = makeStyles({
     root: {
@@ -62,8 +63,15 @@ function App() {
     },
   });
   const classes = useStyles();
+  useEffect(() => {
+    setHasLoaded(true);
+  }, []);
   return (
-    <div className="" className={`App ${classes.root}`}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: hasLoaded ? 1 : 0 }}
+      className={`App ${classes.root}`}
+    >
       <Grid container>
         <Grid item md={7} xs={12} className={classes.wrapper}>
           <Grid item xs={12} sm={9} className={classes.innerMain}>
@@ -108,7 +116,7 @@ function App() {
           <div className={classes.vertOverlay} style={{ right: "0" }} />
         </>
       )}
-    </div>
+    </motion.div>
   );
 }
 

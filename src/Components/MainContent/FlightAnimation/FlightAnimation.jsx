@@ -36,20 +36,18 @@ const FlightAnimation = () => {
   const theme = useTheme();
   const svgControls = useAnimation();
   const { scrollY, scrollYProgress } = useViewportScroll();
-  const isSmDo = useMediaQuery(theme.breakpoints.down("sm"));
+  const isXs = useMediaQuery(theme.breakpoints.down("xs"));
   const isMdDo = useMediaQuery(theme.breakpoints.down("md"));
+  const screen1080p = useMediaQuery("(max-width:1920px)");
+
   const path = useRef();
   const star = useRef();
   const planeWrap = useRef();
   const end = useRef();
   const endText = useRef();
 
-  const y1 = useTransform(scrollY, [0, 200], [0, 100]);
-  const svgPathY = useTransform(
-    scrollYProgress,
-    isSmDo ? [0, 0.05, 0.1] : [0, 0.2, 0.3],
-    [0, 0.5, 1]
-  );
+  const y1 = useTransform(scrollY, [0, 350], [0, 250]);
+  const svgPathY = useTransform(scrollYProgress, [0, 0.05, 0.1], [0, 0.5, 1]);
   const planeRotation = useTransform(
     svgPathY,
     [0, 0.2, 0.3, 0.4, 0.5, 0.6, 1],
@@ -125,7 +123,7 @@ const FlightAnimation = () => {
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         width="100%"
-        height="400px"
+        height={!screen1080p ? "400px" : "300px"}
         viewBox="0 0 800 300"
         className={classes.svgPath}
         style={{ y: yScroll }}
