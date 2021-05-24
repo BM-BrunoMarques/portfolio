@@ -28,7 +28,7 @@ window.onbeforeunload = function () {
 function App() {
   const theme = useTheme();
   const isSmDo = useMediaQuery(theme.breakpoints.down("sm"));
-  const isSmUp = useMediaQuery(theme.breakpoints.up("sm"));
+  const isSmUp = useMediaQuery(theme.breakpoints.up("md"));
   const deskTopMenus = useMediaQuery("(min-width:1500px)");
 
   const isXs = useMediaQuery(theme.breakpoints.down("xs"));

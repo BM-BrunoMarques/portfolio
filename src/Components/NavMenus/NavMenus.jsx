@@ -1,15 +1,25 @@
 import React, { useState, useEffect, useRef } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import { styled } from "@material-ui/core/styles";
-import { motion } from "framer-motion";
+
 import Typography from "@material-ui/core/Typography";
+import Link from "@material-ui/core/Link";
+
+import MenuItem from "@material-ui/core/MenuItem";
+import Menu from "@material-ui/core/Menu";
+
+import { motion } from "framer-motion";
 
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 const NavMenus = ({ smallerWindow }) => {
   const theme = useTheme();
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [selectedIndex, setSelectedIndex] = React.useState(1);
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   const isSmDo = useMediaQuery(theme.breakpoints.down("sm"));
   const isSmUp = useMediaQuery(theme.breakpoints.up("sm"));
   const isXs = useMediaQuery(theme.breakpoints.down("xs"));
@@ -20,6 +30,50 @@ const NavMenus = ({ smallerWindow }) => {
   return (
     <>
       <Typography
+        // color="primary"
+        variant="h4"
+        textAnchor="middle"
+        style={{
+          position: "absolute",
+          marginLeft: smallerWindow ? "-20%" : "",
+        }}
+      >
+        <motion.div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            lineHeight: "1.4em",
+          }}
+        >
+          <Link className="about" href="#aboutMe">
+            About Me
+          </Link>
+          <Link className="projects" href="#projects">
+            Projects
+          </Link>
+        </motion.div>
+      </Typography>
+      {/* <Menu
+        id="simple-menu"
+        anchorEl={anchorEl}
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+      >
+        <Typography
+          color="primary"
+          variant="h4"
+          textAnchor="middle"
+          style={{
+            position: "absolute",
+            marginLeft: smallerWindow ? "-20%" : "",
+          }}
+        >
+          <MenuItem onClick={handleClose}>Profile</MenuItem>
+          <MenuItem onClick={handleClose}>My account</MenuItem>
+          <MenuItem onClick={handleClose}>Logout</MenuItem>
+        </Typography>
+      </Menu> */}
+      {/* <Typography
         color="primary"
         variant="h4"
         textAnchor="middle"
@@ -28,8 +82,8 @@ const NavMenus = ({ smallerWindow }) => {
           marginLeft: smallerWindow ? "-20%" : "",
         }}
       >
-        MENUS
-      </Typography>
+        About Me Projects
+      </Typography> */}
     </>
   );
 };

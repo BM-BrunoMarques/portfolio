@@ -123,6 +123,10 @@ const AboutMe = () => {
         <div className={classes.textBoundary} />
         <div>
           <div ref={aboutMe}>
+            <div
+              id="aboutMe"
+              style={{ position: "absolute", marginTop: "-100PX" }}
+            />
             <motion.div
               style={{
                 display: "grid",

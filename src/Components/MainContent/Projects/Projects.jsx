@@ -23,8 +23,9 @@ import postfeet from "./mp4/postfeet.mp4";
 import mnm from "./mp4/mnm.mp4";
 import chippers from "./mp4/chippers.mp4";
 import wwm from "./mp4/wwm.mp4";
-import nswomen from "./mp4/nswomen.mp4";
 import btrust from "./mp4/btrust.mp4";
+import admin from "./mp4/admin.mp4";
+import crypto from "./mp4/crypto.mp4";
 import LazyProject from "./LazyProject/LazyProject";
 
 const vidW = 464;
@@ -50,6 +51,22 @@ const projects = [
   {
     width: vidW,
     height: vidH,
+    title: "Admin Dashboard - Personal Project",
+    description:
+      "A WebApp UI for an Admin dashboard, with users and orders management. Developed with React.js, TypeScript and Redux ToolKit for the state management. MaterialUI as design library, Formik/Yup for form validation and Framer-Motion for animations",
+    src: admin,
+  },
+  {
+    width: vidW,
+    height: vidH,
+    title: "Crypto Currency Tracker - Personal Project",
+    description:
+      "A WebApp that displays a list of all the existing coins, via CoinGeck API, on a table with infinite load. Built with React.js, AntD as design library. The data is being fetched dynamically from CoinGecko's API.",
+    src: crypto,
+  },
+  {
+    width: vidW,
+    height: vidH,
     title: "HomeLovers - Real Estate Company",
     description:
       "Lead developer, worked with a CMS and developed templates from scratch using Vanilla JavaScript, jQuery, HTML5, CSS3 and bootstrap to make the website responsive.",
@@ -66,19 +83,18 @@ const projects = [
   {
     width: vidW,
     height: vidH,
+    title: "APCERGROUP - Global certification, audit and education services",
+    description:
+      "Lead developer, worked with a CMS and developed templates from scratch using Vanilla JavaScript, jQuery, HTML5, CSS3 and bootstrap to make the website responsive.",
+    src: apcer,
+  },
+  {
+    width: vidW,
+    height: vidH,
     title: "JNabaisAdvogados - Law Group",
     description:
       "Lead developer, worked with a CMS and developed templates from scratch using Vanilla JavaScript, jQuery, HTML5, CSS3 and bootstrap to make the website responsive.",
     src: jnabais,
-  },
-
-  {
-    width: vidW,
-    height: vidH,
-    title: "Chippers - Chips and Sauce Food",
-    description:
-      "Lead developer, worked with a CMS and developed templates from scratch using Vanilla JavaScript, jQuery, HTML5, CSS3 and bootstrap to make the website responsive.",
-    src: chippers,
   },
   {
     width: vidW,
@@ -88,6 +104,16 @@ const projects = [
       "Lead developer, worked with a CMS and developed templates from scratch using Vanilla JavaScript, jQuery, HTML5, CSS3 and bootstrap to make the website responsive.",
     src: postfeet,
   },
+
+  {
+    width: vidW,
+    height: vidH,
+    title: "Chippers - Gastronomy",
+    description:
+      "Lead developer, worked with a CMS and developed templates from scratch using Vanilla JavaScript, jQuery, HTML5, CSS3 and bootstrap to make the website responsive.",
+    src: chippers,
+  },
+
   {
     width: vidW,
     height: vidH,
@@ -97,14 +123,6 @@ const projects = [
     src: mnm,
   },
 
-  {
-    width: vidW,
-    height: vidH,
-    title: "APCERGROUP - Global certification, audit and education services",
-    description:
-      "Lead developer, worked with a CMS and developed templates from scratch using Vanilla JavaScript, jQuery, HTML5, CSS3 and bootstrap to make the website responsive.",
-    src: apcer,
-  },
   {
     width: vidW,
     height: vidH,
@@ -158,9 +176,10 @@ const Projects = () => {
 
   return (
     <motion.div style={{ y: yScroll }}>
+      <div id="projects" style={{ position: "absolute", marginTop: "20px" }} />
       <Typography
         color="primary"
-        variant="h4"
+        variant="h3"
         textAnchor="middle"
         style={{
           textAlign: "center",
