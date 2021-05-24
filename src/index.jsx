@@ -31,9 +31,9 @@ const theme = createMuiTheme({
 });
 
 theme.typography.h5 = {
-  fontSize: "1.2rem",
+  fontSize: "1.7rem",
   "@media (max-width:1920px)": {
-    fontSize: "1.1rem",
+    fontSize: "1.4rem",
     fontWeight: "500",
   },
   // [theme.breakpoints.up('md')]: {

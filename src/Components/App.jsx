@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import MainContent from "./MainContent/MainContent";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import NavMenus from "./NavMenus/NavMenus";
 
 const CustomBackground = styled("div")({
   backgroundImage: "radial-gradient(#FFF 1px, #000 1px)",
@@ -28,6 +29,9 @@ function App() {
   const theme = useTheme();
   const isSmDo = useMediaQuery(theme.breakpoints.down("sm"));
   const isSmUp = useMediaQuery(theme.breakpoints.up("sm"));
+  const deskTopMenus = useMediaQuery("(min-width:1500px)");
+
+  const isXs = useMediaQuery(theme.breakpoints.down("xs"));
   const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
   const [hasLoaded, setHasLoaded] = useState(false);
 
@@ -90,7 +94,7 @@ function App() {
           style={{
             position: isMdUp ? "fixed" : "relative",
             right: "7px",
-            top: "30px",
+            top: !isXs ? "30px" : "300px",
             width: "100%",
           }}
         >
@@ -105,7 +109,10 @@ function App() {
               backgroundPosition: ["0 10px", "0 1000px"],
             }}
           />
-          <LogoAvatar />
+          <div style={{ width: "90%", display: "flex", alignItems: "center" }}>
+            {isSmUp && <NavMenus smallerWindow={!deskTopMenus} />}
+            <LogoAvatar />
+          </div>
         </Grid>
       </Grid>
       {isSmUp && (

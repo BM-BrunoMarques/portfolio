@@ -26,7 +26,7 @@ const MainContent = () => {
       textAlign: "justify",
     },
     pojectsSecion: {
-      marginTop: "55px",
+      marginTop: "20vh",
     },
   });
 

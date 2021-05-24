@@ -15,9 +15,9 @@ const LogoAvatar = () => {
   const useStyles = makeStyles({
     root: {
       display: "flex",
-      width: "90%",
+      // width: "90%",
       height: !screen1080p ? "430px" : "330px",
-      overflow: "hidden",
+      // overflow: "hidden",
       justifyContent: "center",
       boxShadow: "0 0 89px 0px black",
       borderTop: "1px solid #0f0f0f",
@@ -55,9 +55,7 @@ const LogoAvatar = () => {
 
     window.addEventListener("mousemove", function (event) {
       if (!isSmall) {
-        mouse.x = screen1080p
-          ? event.x - canvas.offsetLeft - window.innerWidth / 1.7
-          : event.x - canvas.offsetLeft - window.innerWidth / 1.9;
+        mouse.x = event.x - canvas.offsetLeft - window.innerWidth / 1.7;
         mouse.y = event.y - canvas.offsetTop;
       }
     });
@@ -65,7 +63,10 @@ const LogoAvatar = () => {
 
   return (
     <>
-      <div className={classes.root}>
+      <div
+        className={classes.root}
+        style={{ overflow: "hidden", width: "100%" }}
+      >
         <canvas
           style={{
             borderRadius: "100%",

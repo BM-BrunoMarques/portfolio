@@ -1,7 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import { motion, AnimatePresence } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useViewportScroll,
+  useTransform,
+  useSpring,
+} from "framer-motion";
 import me from "./img/me.jpg";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
@@ -34,7 +40,7 @@ const AboutMe = () => {
         visibleText: () => ({
           opacity: [0, 0.4, 0.8, 1],
           transition: {
-            delay: i * 0.01,
+            delay: i * 0.03,
           },
         }),
       },
@@ -102,20 +108,30 @@ const AboutMe = () => {
     setVisibleText(true);
   }, []);
 
+  const { scrollY } = useViewportScroll();
+  const y1 = useTransform(scrollY, [0, 150, 400], [0, 200, 280]);
+
+  const yScroll = useSpring(y1, {
+    stiffness: 200,
+    damping: 90,
+  });
+
   return (
     <>
-      <div className={classes.bgsk8}>
+      <motion.div style={{ y: yScroll }} className={classes.bgsk8}>
         <div className={classes.textBoundary} />
         <div className={classes.textBoundary} />
         <div>
           <div ref={aboutMe}>
-            <div
+            <motion.div
               style={{
                 display: "grid",
                 position: "relative",
                 placeItems: "center",
                 marginTop: !screen1080p ? "30px" : "5px",
               }}
+              animate={{ scale: !isXs ? 1.5 : 1.3 }}
+              transition={{ delay: 0.1, duration: 0.3 }}
             >
               <div
                 style={{
@@ -136,13 +152,15 @@ const AboutMe = () => {
                   <motion.span
                     key={i}
                     {...animationWord(i)}
-                    style={{ fontSize: i % 2 === 0 ? "38px" : "24px" }}
+                    style={{
+                      fontSize: i % 2 === 0 ? "38px" : "24px",
+                    }}
                   >
                     {l}
                   </motion.span>
                 ))}
               </Typography>
-            </div>
+            </motion.div>
             <AnimatePresence>
               {visibleText && (
                 <div
@@ -153,7 +171,11 @@ const AboutMe = () => {
                   }}
                 >
                   <div>
-                    <Typography color="primary" variant="h5">
+                    <Typography
+                      color="primary"
+                      variant="h5"
+                      style={{ textAlign: isXs ? "center" : "" }}
+                    >
                       <span
                         style={{
                           background: "rgba(74, 66, 66, 0.12)",
@@ -161,11 +183,11 @@ const AboutMe = () => {
                           lineHeight: isXs ? "1.40em" : "1.85em",
                         }}
                       >
-                        {myText.firstP.split(" ").map((word, i) => {
+                        {myText.firstP.split(" ").map((word, wi) => {
                           return (
                             <motion.span
                               className="word"
-                              key={i}
+                              key={wi}
                               style={{
                                 marginRight: "8px",
                                 display: "inline-block",
@@ -175,7 +197,7 @@ const AboutMe = () => {
                                 .map((l, i) => (
                                   <motion.span
                                     key={i}
-                                    {...animationLetter(i)}
+                                    {...animationLetter(wi)}
                                     style={{
                                       display: "inline-block",
                                     }}
@@ -202,11 +224,11 @@ const AboutMe = () => {
                               lineHeight: isXs ? "1.40em" : "1.55em",
                             }}
                           >
-                            {myText.thirdP.split(" ").map((word, i) => {
+                            {myText.thirdP.split(" ").map((word, wi) => {
                               return (
                                 <motion.span
                                   className="word"
-                                  key={i}
+                                  key={wi}
                                   style={{
                                     marginRight: "8px",
                                     display: "inline-block",
@@ -216,7 +238,7 @@ const AboutMe = () => {
                                     .map((l, i) => (
                                       <motion.span
                                         key={i}
-                                        {...animationLetter(i)}
+                                        {...animationLetter(wi)}
                                         style={{
                                           display: "inline-block",
                                         }}
@@ -272,7 +294,7 @@ const AboutMe = () => {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };

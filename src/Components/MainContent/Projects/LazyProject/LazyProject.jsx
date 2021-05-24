@@ -5,11 +5,11 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { Typography } from "@material-ui/core";
-import ReactPlayer from "react-player";
+import ReactPlayer from "react-player/lazy";
 
 import ddbc from "../mp4/ddbc.mp4";
 
-const LazyProject = ({ width, height, src, ...rest }) => {
+const LazyProject = ({ width, height, src, title, description, ...rest }) => {
   const wrapper = useRef();
   const [hasShown, setHasShown] = useState(false);
   const theme = useTheme();
@@ -22,15 +22,11 @@ const LazyProject = ({ width, height, src, ...rest }) => {
   const { ref, inView, entry } = useInView({
     threshold: [0.2, 0.4],
     rootMargin: "-250px 0px -200px 0px",
-
-    // trackVisibility: true,
-    // delay: 400,
-    // rootMargin: "300px",
   });
 
   const variants = {
     initialWrap: {
-      y: 140,
+      y: 70,
     },
     appear: {
       y: 0,
@@ -42,7 +38,7 @@ const LazyProject = ({ width, height, src, ...rest }) => {
       },
     },
     changeBg: {
-      backgroundColor: inView ? "#090909" : "#000",
+      backgroundColor: inView ? "rgba(9, 9, 9, 0.5)" : "#000",
       transition: {
         delay: hasShown ? 0.05 : 0.25,
         type: "anticipate",
@@ -56,7 +52,6 @@ const LazyProject = ({ width, height, src, ...rest }) => {
       setHasShown(true);
     }
     setIsPlay(inView);
-    videoPlayer?.current?.seekTo(0);
   }, [inView]);
 
   return (
@@ -67,7 +62,7 @@ const LazyProject = ({ width, height, src, ...rest }) => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        marginBottom: !isXs ? "150px" : "40px",
+        marginBottom: !isXs ? "150px" : "130px",
         minHeight: !isXs ? "530px" : "100px",
         flexDirection: "column",
       }}
@@ -80,14 +75,14 @@ const LazyProject = ({ width, height, src, ...rest }) => {
           animate={["appear", "changeBg"]}
         >
           <div style={{ width: "100%" }}>
-            <Typography color="primary">
+            <Typography color="primary" style={{ padding: "20px" }}>
               <motion.span
-                style={{ display: "block" }}
+                style={{ display: "block", fontSize: "1.3em", fontWeight: 600 }}
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.4 }}
               >
-                work for COMPANY NAME
+                {title}
               </motion.span>
               <br />
               <motion.span
@@ -96,7 +91,7 @@ const LazyProject = ({ width, height, src, ...rest }) => {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.7 }}
               >
-                Description of the work... ... ...
+                {description}
               </motion.span>
             </Typography>
           </div>
@@ -104,7 +99,6 @@ const LazyProject = ({ width, height, src, ...rest }) => {
             // data-inview={inView}
             style={{
               position: "relative",
-              // minHeight: height / 1.2,
               width: "100%",
             }}
             initial={{ opacity: 0.2 }}
@@ -117,7 +111,7 @@ const LazyProject = ({ width, height, src, ...rest }) => {
             <>
               <ReactPlayer
                 ref={videoPlayer}
-                url={ddbc}
+                url={src}
                 playing={inView}
                 loop
                 muted
