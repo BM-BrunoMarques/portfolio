@@ -126,7 +126,7 @@ const FlightAnimation = () => {
         height={!screen1080p ? "400px" : "300px"}
         viewBox="0 0 800 300"
         className={classes.svgPath}
-        style={{ y: yScroll }}
+        style={{ y: !isXs ? yScroll : 0 }}
       >
         <g
           transform={`${

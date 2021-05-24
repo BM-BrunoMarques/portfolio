@@ -175,7 +175,7 @@ const Projects = () => {
   });
 
   return (
-    <motion.div style={{ y: yScroll }}>
+    <motion.div style={{ y: !isXs ? yScroll : 0 }}>
       <div id="projects" style={{ position: "absolute", marginTop: "20px" }} />
       <Typography
         color="primary"

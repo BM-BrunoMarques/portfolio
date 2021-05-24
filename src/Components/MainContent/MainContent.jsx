@@ -38,7 +38,7 @@ const MainContent = () => {
         <motion.div className={classes.content}>
           <div className={classes.aboutSection}>
             <AboutMe />
-            <div style={{ margin: isSmLg ? "5px" : "30px 0" }}>
+            <div style={{ margin: isSmLg ? "40px 5px 5px 5px" : "30px 0" }}>
               <FlightAnimation />
             </div>
           </div>

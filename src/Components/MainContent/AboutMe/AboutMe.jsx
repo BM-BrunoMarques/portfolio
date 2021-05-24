@@ -24,10 +24,10 @@ const useStyles = makeStyles({
 const AboutMe = () => {
   const classes = useStyles();
   const topImg = useRef();
-  const botImg = useRef();
   const aboutMe = useRef();
   const [visibleText, setVisibleText] = useState(false);
   const [topImgHeight, setTopImgHeight] = useState();
+  const [hoverColor, setHoverColor] = useState(false);
   const screen1080p = useMediaQuery("(max-width:1920px)");
 
   const animationLetter = (i) => {
@@ -47,7 +47,7 @@ const AboutMe = () => {
       whileHover: {
         rotate: Math.random() * (-35 - 35) + 35,
         scale: [1, 1.8, 1],
-        color: ["bisque", "white"],
+        color: ["#ffe4c4", "#FFF"],
       },
       transition: { duration: 0.2 },
     };
@@ -57,9 +57,13 @@ const AboutMe = () => {
       whileHover: {
         scale: 1.1,
         padding: "0 4px 0 0",
-        color: ["bisque", "white"],
+        color: "#ffe4c4",
       },
       transition: { duration: 0.1 },
+      // animate: {
+      //   color: "#ffe4c4",
+      //   transition: { duration: 0.3, delay: 1 },
+      // },
     };
   };
 
@@ -118,7 +122,7 @@ const AboutMe = () => {
 
   return (
     <>
-      <motion.div style={{ y: yScroll }} className={classes.bgsk8}>
+      <motion.div style={{ y: !isXs ? yScroll : 0 }} className={classes.bgsk8}>
         <div className={classes.textBoundary} />
         <div className={classes.textBoundary} />
         <div>
@@ -129,41 +133,44 @@ const AboutMe = () => {
             />
             <motion.div
               style={{
-                display: "grid",
                 position: "relative",
-                placeItems: "center",
+                overflow: "hidden",
                 marginTop: !screen1080p ? "30px" : "5px",
               }}
-              animate={{ scale: !isXs ? 1.5 : 1.3 }}
-              transition={{ delay: 0.1, duration: 0.3 }}
             >
-              <div
-                style={{
-                  borderRadius: "50%",
-                  width: "80px",
-                  height: "80px",
-                  display: "block",
-                  border: "1px solid #FFF",
-                }}
-              />
-              <Typography
-                style={{ position: "absolute" }}
-                color="primary"
-                variant="h5"
-                textAnchor="middle"
+              <motion.div
+                animate={{ scale: !isXs ? 1.5 : 1.3 }}
+                transition={{ delay: 0.1, duration: 0.3 }}
+                style={{ display: "grid", placeItems: "center" }}
               >
-                {[...myText.hello].map((l, i) => (
-                  <motion.span
-                    key={i}
-                    {...animationWord(i)}
-                    style={{
-                      fontSize: i % 2 === 0 ? "38px" : "24px",
-                    }}
-                  >
-                    {l}
-                  </motion.span>
-                ))}
-              </Typography>
+                <div
+                  style={{
+                    borderRadius: "50%",
+                    width: "80px",
+                    height: "80px",
+                    display: "block",
+                    border: "1px solid #FFF",
+                  }}
+                />
+                <Typography
+                  style={{ position: "absolute" }}
+                  color="primary"
+                  variant="h5"
+                  textAnchor="middle"
+                >
+                  {[...myText.hello].map((l, i) => (
+                    <motion.span
+                      key={i}
+                      {...animationWord(i)}
+                      style={{
+                        fontSize: i % 2 === 0 ? "38px" : "24px",
+                      }}
+                    >
+                      {l}
+                    </motion.span>
+                  ))}
+                </Typography>
+              </motion.div>
             </motion.div>
             <AnimatePresence>
               {visibleText && (

@@ -51,6 +51,9 @@ const LazyProject = ({ width, height, src, title, description, ...rest }) => {
     if (!hasShown && inView) {
       setHasShown(true);
     }
+    if (inView && videoPlayer.current) {
+      videoPlayer.current.seekTo(0);
+    }
     setIsPlay(inView);
   }, [inView]);
 
@@ -75,9 +78,14 @@ const LazyProject = ({ width, height, src, title, description, ...rest }) => {
           animate={["appear", "changeBg"]}
         >
           <div style={{ width: "100%" }}>
-            <Typography color="primary" style={{ padding: "20px" }}>
+            <Typography color="inherit" style={{ padding: "20px" }}>
               <motion.span
-                style={{ display: "block", fontSize: "1.3em", fontWeight: 600 }}
+                style={{
+                  color: "bisque",
+                  display: "block",
+                  fontSize: "1.3em",
+                  fontWeight: 600,
+                }}
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.4 }}
@@ -86,7 +94,7 @@ const LazyProject = ({ width, height, src, title, description, ...rest }) => {
               </motion.span>
               <br />
               <motion.span
-                style={{ display: "block" }}
+                style={{ display: "block", color: "#FFF" }}
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.7 }}

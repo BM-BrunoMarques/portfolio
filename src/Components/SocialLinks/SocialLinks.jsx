@@ -4,15 +4,18 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Link from "@material-ui/core/Link";
 
-import MenuItem from "@material-ui/core/MenuItem";
-import Menu from "@material-ui/core/Menu";
+import GitHubIcon from "@material-ui/icons/GitHub";
+import LinkedInIcon from "@material-ui/icons/LinkedIn";
+import IconButton from "@material-ui/core/IconButton";
+import DescriptionIcon from "@material-ui/icons/Description";
+import resume from "./resume/Bruno_Marques.pdf";
 
 import { motion } from "framer-motion";
 
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
-const NavMenus = ({ smallerWindow }) => {
+const SocialLinks = ({ smallerWindow }) => {
   const theme = useTheme();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [selectedIndex, setSelectedIndex] = React.useState(1);
@@ -35,22 +38,55 @@ const NavMenus = ({ smallerWindow }) => {
         textAnchor="middle"
         style={{
           position: "absolute",
-          marginLeft: smallerWindow ? "-26%" : "2%",
+          right: "40px",
+          marginLeft: smallerWindow ? "-20%" : "",
+          border: "1px solid #FFF",
+          borderRadius: "35px",
+          background: "#000",
+          padding: "10px 0",
         }}
       >
         <motion.div
           style={{
             display: "flex",
             flexDirection: "column",
-            lineHeight: "1.4em",
           }}
         >
-          <Link className="about" href="#aboutMe">
-            About Me
-          </Link>
-          <Link className="projects" href="#projects">
-            Projects
-          </Link>
+          <IconButton style={{ padding: 0 }}>
+            <Link className="about" href={resume} target="_blank">
+              <DescriptionIcon
+                style={{
+                  fontSize: !smallerWindow ? "2.3em" : "1.9em",
+                  color: "#ffe4c4",
+                }}
+              />
+            </Link>
+          </IconButton>
+          <IconButton style={{ padding: !smallerWindow ? "" : 0 }}>
+            <Link
+              className="about"
+              href="https://github.com/BM-BrunoMarques"
+              target="_blank"
+            >
+              <GitHubIcon
+                style={{ fontSize: !smallerWindow ? "2.3em" : "1.9em" }}
+              />
+            </Link>
+          </IconButton>
+          <IconButton style={{ padding: 0 }}>
+            <Link
+              className="about"
+              href="https://www.linkedin.com/in/bruno-marques93/"
+              target="_blank"
+            >
+              <LinkedInIcon
+                style={{
+                  fontSize: !smallerWindow ? "2.3em" : "1.9em",
+                  color: "#0e76a8",
+                }}
+              />
+            </Link>
+          </IconButton>
         </motion.div>
       </Typography>
       {/* <Menu
@@ -88,4 +124,4 @@ const NavMenus = ({ smallerWindow }) => {
   );
 };
 
-export default NavMenus;
+export default SocialLinks;

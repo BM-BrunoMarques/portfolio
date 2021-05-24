@@ -9,6 +9,7 @@ import MainContent from "./MainContent/MainContent";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import NavMenus from "./NavMenus/NavMenus";
+import SocialLinks from "./SocialLinks/SocialLinks";
 
 const CustomBackground = styled("div")({
   backgroundImage: "radial-gradient(#FFF 1px, #000 1px)",
@@ -112,6 +113,7 @@ function App() {
           <div style={{ width: "90%", display: "flex", alignItems: "center" }}>
             {isSmUp && <NavMenus smallerWindow={!deskTopMenus} />}
             <LogoAvatar />
+            {isSmUp && <SocialLinks smallerWindow={!deskTopMenus} />}
           </div>
         </Grid>
       </Grid>
