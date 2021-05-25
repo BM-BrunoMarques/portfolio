@@ -15,19 +15,6 @@ const theme = createMuiTheme({
   },
   typography: {
     fontFamily: "Oxanium, cursive",
-    //  [
-    //   "Oxanium, cursive",
-    //   "-apple-system",
-    //   "BlinkMacSystemFont",
-    //   '"Segoe UI"',
-    //   "Roboto",
-    //   '"Helvetica Neue"',
-    //   "Arial",
-    //   "sans-serif",
-    //   '"Apple Color Emoji"',
-    //   '"Segoe UI Emoji"',
-    //   '"Segoe UI Symbol"',
-    // ].join(","),
   },
 });
 
@@ -37,9 +24,7 @@ theme.typography.h5 = {
     fontSize: "1.4rem",
     fontWeight: "500",
   },
-  // [theme.breakpoints.up('md')]: {
-  //   fontSize: '2.4rem',
-  // },
+
 };
 
 ReactDOM.render(
