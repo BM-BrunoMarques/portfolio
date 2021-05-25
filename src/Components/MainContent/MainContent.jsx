@@ -9,6 +9,7 @@ import { motion } from "framer-motion";
 import EmailIcon from "@material-ui/icons/Email";
 import PhoneIcon from "@material-ui/icons/Phone";
 import Link from "@material-ui/core/Link";
+import { isMobile } from "react-device-detect";
 
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
@@ -37,7 +38,7 @@ const MainContent = () => {
       position: "fixed",
       bottom: "0",
       width: "100%",
-      background: "#0c0c0c",
+      background: isMobile ? "#1d1d1d" : "#0d0d0d",
       left: "0",
       fontSize: "1.6em",
       zIndex: 1,

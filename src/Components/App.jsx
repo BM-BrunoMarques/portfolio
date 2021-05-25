@@ -10,6 +10,7 @@ import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import NavMenus from "./NavMenus/NavMenus";
 import SocialLinks from "./SocialLinks/SocialLinks";
+import { isMobile } from "react-device-detect";
 
 const CustomBackground = styled("div")({
   backgroundImage: "radial-gradient(#FFF 1px, #000 1px)",
@@ -50,14 +51,14 @@ function App() {
       width: !isSmDo ? "30px" : "20px",
       height: "100%",
       position: "fixed",
-      backgroundColor: "#0d0d0d",
+      backgroundColor: isMobile ? "#1d1d1d" : "#0d0d0d",
       top: "0",
     },
     horizOverlay: {
       width: "100%",
       height: !isSmDo ? "30px" : "20px",
       position: "fixed",
-      backgroundColor: "#0d0d0d",
+      backgroundColor: isMobile ? "#1d1d1d" : "#0d0d0d",
       left: "0",
     },
     innerMain: {
@@ -112,8 +113,8 @@ function App() {
           />
           <div style={{ width: "90%", display: "flex", alignItems: "center" }}>
             <NavMenus smallerWindow={!deskTopMenus} />
-            {isSmUp && <SocialLinks smallerWindow={!deskTopMenus} />}
             <LogoAvatar />
+            <SocialLinks smallerWindow={!deskTopMenus} />
           </div>
         </Grid>
       </Grid>

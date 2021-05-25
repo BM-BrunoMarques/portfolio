@@ -16,6 +16,7 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import MenuIcon from "@material-ui/icons/Menu";
 
+
 const NavMenus = ({ smallerWindow }) => {
   const theme = useTheme();
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -67,7 +68,6 @@ const NavMenus = ({ smallerWindow }) => {
   return (
     <>
       <Typography
-        // color="primary"
         variant="h4"
         textAnchor="middle"
         style={{
@@ -135,90 +135,9 @@ const NavMenus = ({ smallerWindow }) => {
                 </Link>
               </MenuItem>
             </StyledMenu>
-
-            {/* aaaaaaaaaa */}
-            {/* <Button
-              ref={divRef}
-              style={{ color: "#FFF" }}
-              aria-haspopup="true"
-              onClick={handleClick}
-              aria-describedby={id}
-              variant="contained"
-              onClick={handleClick}
-            >
-              <MenuIcon />
-            </Button>
-
-            <StyledMenu
-              id={id}
-              keepMounted
-              anchorEl={anchorEl}
-              open={anchorEl}
-              onClose={handleClose}
-            >
-              <Link href="#aboutMe" style={{ color: "#FFF", display: "flex" }}>
-                <SendIcon fontSize="small" />
-                <ListItemText primary="ABOUT ME" />
-              </Link>
-
-              <Link href="#projects" style={{ color: "#FFF", display: "flex" }}>
-                <SendIcon fontSize="small" />
-                <ListItemText primary="PROJECTS" />
-              </Link>
-            </StyledMenu> */}
-            {/* aaaaaaa */}
-
-            {/* <Menu
-              anchorEl={anchorEl}
-              keepMounted
-              open={Boolean(anchorEl)}
-              onClose={handleClose}
-            >
-              <MenuItem onClick={handleClose}>
-                <Link className="about" href="#aboutMe">
-                  ABOUT ME
-                </Link>
-              </MenuItem>
-              <MenuItem onClick={handleClose}>
-                <Link className="projects" href="#projects">
-                  PROJECTS
-                </Link>
-              </MenuItem>
-            </Menu> */}
           </motion.div>
         )}
       </Typography>
-      {/* <Menu
-        id="simple-menu"
-        anchorEl={anchorEl}
-        open={Boolean(anchorEl)}
-        onClose={handleClose}
-      >
-        <Typography
-          color="primary"
-          variant="h4"
-          textAnchor="middle"
-          style={{
-            position: "absolute",
-            marginLeft: smallerWindow ? "-20%" : "",
-          }}
-        >
-          <MenuItem onClick={handleClose}>Profile</MenuItem>
-          <MenuItem onClick={handleClose}>My account</MenuItem>
-          <MenuItem onClick={handleClose}>Logout</MenuItem>
-        </Typography>
-      </Menu> */}
-      {/* <Typography
-        color="primary"
-        variant="h4"
-        textAnchor="middle"
-        style={{
-          position: "absolute",
-          marginLeft: smallerWindow ? "-20%" : "",
-        }}
-      >
-        About Me Projects
-      </Typography> */}
     </>
   );
 };

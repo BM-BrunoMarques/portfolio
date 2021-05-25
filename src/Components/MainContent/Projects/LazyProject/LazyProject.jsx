@@ -8,6 +8,7 @@ import { Typography } from "@material-ui/core";
 import ReactPlayer from "react-player/lazy";
 
 import ddbc from "../mp4/ddbc.mp4";
+import { isMobileSafari } from "react-device-detect";
 
 const LazyProject = ({ width, height, src, title, description, ...rest }) => {
   const wrapper = useRef();
@@ -26,7 +27,7 @@ const LazyProject = ({ width, height, src, title, description, ...rest }) => {
 
   const variants = {
     initialWrap: {
-      y: 70,
+      y: 30,
     },
     appear: {
       y: 0,
@@ -51,9 +52,9 @@ const LazyProject = ({ width, height, src, title, description, ...rest }) => {
     if (!hasShown && inView) {
       setHasShown(true);
     }
-    if (!hasShown && inView && videoPlayer.current) {
-      videoPlayer?.current?.seekTo(0);
-    }
+    // if (hasShown && inView && videoPlayer.current) {
+    //   videoPlayer?.current?.seekTo(0);
+    // }
     setIsPlay(inView);
   }, [inView]);
 
@@ -121,6 +122,7 @@ const LazyProject = ({ width, height, src, title, description, ...rest }) => {
                 ref={videoPlayer}
                 url={src}
                 playing={inView}
+                controls={isMobileSafari}
                 loop
                 muted
                 width="100%"

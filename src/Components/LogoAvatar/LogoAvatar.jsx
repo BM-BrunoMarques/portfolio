@@ -5,6 +5,7 @@ import { drawImage } from "./Animation/ParticleAnimation";
 import { makeStyles } from "@material-ui/core/styles";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { isMobileSafari } from "react-device-detect";
 
 const LogoAvatar = () => {
   const canvasRef = useRef(null);
@@ -26,6 +27,7 @@ const LogoAvatar = () => {
     canvas: {
       background: "rgba(0, 0, 0, 0.8)",
       padding: "10px",
+      width: isMobileSafari ? '300px' : ''
     },
   });
 
@@ -37,8 +39,8 @@ const LogoAvatar = () => {
     const image = new Image();
     image.src = base64Logo;
 
-    canvas.width = 400;
-    canvas.height = 400;
+    canvas.width = isMobileSafari ? 370 : 400;
+    canvas.height = isMobileSafari ? 360 : 400;
 
     let mouse = {
       x: null,

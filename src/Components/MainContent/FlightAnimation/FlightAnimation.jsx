@@ -18,6 +18,8 @@ import {
   SVGportugalText,
 } from "./svg/svgPaths";
 
+import { isMobileSafari } from "react-device-detect";
+
 const useStyles = makeStyles({
   svgPath: {
     fill: "none",
@@ -67,11 +69,15 @@ const FlightAnimation = () => {
         star.current.setAttribute(
           "transform",
           "translate(" +
-            (path.current.getPointAtLength(curveLength * svgPathY.current).x -
-              50) +
+            (isMobileSafari
+              ? path.current.getPointAtLength(curveLength * svgPathY.current).x
+              : path.current.getPointAtLength(curveLength * svgPathY.current)
+                  .x - 50) +
             "," +
-            (path.current.getPointAtLength(curveLength * svgPathY.current).y -
-              22) +
+            (isMobileSafari
+              ? path.current.getPointAtLength(curveLength * svgPathY.current).y
+              : path.current.getPointAtLength(curveLength * svgPathY.current)
+                  .y - 22) +
             ")" +
             "scale(0.12)"
         );
