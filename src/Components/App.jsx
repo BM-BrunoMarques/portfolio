@@ -111,9 +111,9 @@ function App() {
             }}
           />
           <div style={{ width: "90%", display: "flex", alignItems: "center" }}>
-            {isSmUp && <NavMenus smallerWindow={!deskTopMenus} />}
-            <LogoAvatar />
+            <NavMenus smallerWindow={!deskTopMenus} />
             {isSmUp && <SocialLinks smallerWindow={!deskTopMenus} />}
+            <LogoAvatar />
           </div>
         </Grid>
       </Grid>

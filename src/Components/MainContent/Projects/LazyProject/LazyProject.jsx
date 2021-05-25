@@ -51,8 +51,8 @@ const LazyProject = ({ width, height, src, title, description, ...rest }) => {
     if (!hasShown && inView) {
       setHasShown(true);
     }
-    if (inView && videoPlayer.current) {
-      videoPlayer.current.seekTo(0);
+    if (!hasShown && inView && videoPlayer.current) {
+      videoPlayer?.current?.seekTo(0);
     }
     setIsPlay(inView);
   }, [inView]);
