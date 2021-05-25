@@ -24,6 +24,8 @@ const SocialLinks = ({ smallerWindow }) => {
   };
 
   const isSmDo = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMdDo = useMediaQuery(theme.breakpoints.down("md"));
+
   const isSmUp = useMediaQuery(theme.breakpoints.up("sm"));
   const isXs = useMediaQuery(theme.breakpoints.down("xs"));
 
@@ -43,7 +45,7 @@ const SocialLinks = ({ smallerWindow }) => {
           border: "1px solid #FFF",
           borderRadius: "35px",
           background: "#000",
-          padding: "10px 0",
+          padding: isMdDo ? "10px 5px" : "10px 0",
         }}
       >
         <motion.div
@@ -82,7 +84,7 @@ const SocialLinks = ({ smallerWindow }) => {
               <LinkedInIcon
                 style={{
                   fontSize: !smallerWindow ? "2.3em" : "1.9em",
-                  color: "#0e76a8",
+                  color: "#0a66c2",
                 }}
               />
             </Link>

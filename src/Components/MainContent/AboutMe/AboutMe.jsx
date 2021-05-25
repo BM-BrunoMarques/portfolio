@@ -11,6 +11,7 @@ import {
 import me from "./img/me.jpg";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import FlightAnimation from "../FlightAnimation/FlightAnimation";
 
 const useStyles = makeStyles({
   bgsk8: {
@@ -90,8 +91,6 @@ const AboutMe = () => {
     firstP:
       "My name is Bruno Marques and I am a passionate Frontend Developer with over 4 years of programming experience.",
     secondP:
-      "I am always eager to learn and improve and I strongly believe that everything can be accomplished through hard work and perseverance. I am easy going, communicative, determined and would never decline an invitation to time travel and see all the cool bands!",
-    thirdP:
       "I am always eager to learn and improve and I strongly believe that everything can be accomplished through hard work and perseverance. I am easy going, communicative, determined and would never decline an invitation to time travel and see all the cool bands!",
   };
 
@@ -222,48 +221,55 @@ const AboutMe = () => {
                         })}
                         <br />
                       </span>
-                      {!isXs && (
+                      {isXs && (
                         <div
                           style={{
-                            marginTop: !screen1080p ? "30px" : "15px",
+                            margin: "30px 0",
                           }}
                         >
-                          <span
-                            style={{
-                              background: "rgba(74, 66, 66, 0.12)",
-                              padding: " 0 5px",
-                              lineHeight: isXs ? "1.40em" : "1.55em",
-                            }}
-                          >
-                            {myText.thirdP.split(" ").map((word, wi) => {
-                              return (
-                                <motion.span
-                                  className="word"
-                                  key={wi}
-                                  style={{
-                                    marginRight: "8px",
-                                    display: "inline-block",
-                                  }}
-                                >
-                                  {[...word]
-                                    .map((l, i) => (
-                                      <motion.span
-                                        key={i}
-                                        {...animationLetter(wi)}
-                                        style={{
-                                          display: "inline-block",
-                                        }}
-                                      >
-                                        {l}
-                                      </motion.span>
-                                    ))
-                                    .concat(" ")}
-                                </motion.span>
-                              );
-                            })}
-                          </span>
+                          <FlightAnimation />
                         </div>
                       )}
+                      <div
+                        style={{
+                          marginTop: !screen1080p ? "30px" : "15px",
+                        }}
+                      >
+                        <span
+                          style={{
+                            background: "rgba(74, 66, 66, 0.12)",
+                            padding: " 0 5px",
+                            lineHeight: isXs ? "1.40em" : "1.55em",
+                          }}
+                        >
+                          {myText.secondP.split(" ").map((word, wi) => {
+                            return (
+                              <motion.span
+                                className="word"
+                                key={wi}
+                                style={{
+                                  marginRight: "8px",
+                                  display: "inline-block",
+                                }}
+                              >
+                                {[...word]
+                                  .map((l, i) => (
+                                    <motion.span
+                                      key={i}
+                                      {...animationLetter(wi)}
+                                      style={{
+                                        display: "inline-block",
+                                      }}
+                                    >
+                                      {l}
+                                    </motion.span>
+                                  ))
+                                  .concat(" ")}
+                              </motion.span>
+                            );
+                          })}
+                        </span>
+                      </div>
                     </Typography>
                   </div>
                 </div>

@@ -47,7 +47,7 @@ function App() {
       alignItems: "center",
     },
     vertOverlay: {
-      width: "30px",
+      width: !isSmDo ? "30px" : "20px",
       height: "100%",
       position: "fixed",
       backgroundColor: "#0d0d0d",
@@ -55,7 +55,7 @@ function App() {
     },
     horizOverlay: {
       width: "100%",
-      height: "30px",
+      height: !isSmDo ? "30px" : "20px",
       position: "fixed",
       backgroundColor: "#0d0d0d",
       left: "0",
@@ -117,14 +117,12 @@ function App() {
           </div>
         </Grid>
       </Grid>
-      {isSmUp && (
-        <>
-          <div className={classes.horizOverlay} style={{ top: "0" }} />
-          <div className={classes.horizOverlay} style={{ bottom: "0" }} />
-          <div className={classes.vertOverlay} style={{ left: "0" }} />
-          <div className={classes.vertOverlay} style={{ right: "0" }} />
-        </>
-      )}
+      <>
+        <div className={classes.horizOverlay} style={{ top: "0" }} />
+        <div className={classes.horizOverlay} style={{ bottom: "0" }} />
+        <div className={classes.vertOverlay} style={{ left: "0" }} />
+        <div className={classes.vertOverlay} style={{ right: "0" }} />
+      </>
     </motion.div>
   );
 }

@@ -35,7 +35,8 @@ const NavMenus = ({ smallerWindow }) => {
         textAnchor="middle"
         style={{
           position: "absolute",
-          marginLeft: smallerWindow ? "-26%" : "2%",
+          marginLeft: smallerWindow ? "-11%" : "2%",
+          fontSize: smallerWindow ? "1.4em" : "2em",
         }}
       >
         <motion.div
