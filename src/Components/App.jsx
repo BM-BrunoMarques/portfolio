@@ -105,7 +105,7 @@ function App() {
           <CustomBackground
             component={motion.div}
             transition={{
-              duration: 10000,
+              duration: 20000,
               repeat: Infinity,
               ease: "linear",
             }}
