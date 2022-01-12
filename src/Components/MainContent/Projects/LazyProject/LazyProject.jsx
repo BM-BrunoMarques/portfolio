@@ -10,7 +10,15 @@ import ReactPlayer from "react-player/lazy";
 import ddbc from "../mp4/ddbc.mp4";
 import { isMobileSafari } from "react-device-detect";
 
-const LazyProject = ({ width, height, src, title, description, ...rest }) => {
+const LazyProject = ({
+  width,
+  height,
+  src,
+  title,
+  description,
+  url,
+  ...rest
+}) => {
   const { current, numOfProjects } = rest;
   const wrapper = useRef();
   const [hasShown, setHasShown] = useState(false);
@@ -57,7 +65,7 @@ const LazyProject = ({ width, height, src, title, description, ...rest }) => {
     // }
     setIsPlay(inView);
   }, [inView]);
-  console.log(current, numOfProjects);
+  console.log(url);
 
   return (
     <motion.div
@@ -88,12 +96,31 @@ const LazyProject = ({ width, height, src, title, description, ...rest }) => {
                   display: "block",
                   fontSize: "1.3em",
                   fontWeight: 600,
+                  display: "flex",
+                  flexDirection: "column",
                 }}
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.4 }}
               >
-                {title}
+                <span>{title}</span>
+                {url && (
+                  <span>
+                    link:{" "}
+                    <a
+                      style={{
+                        color: "bisque",
+                        fontSize: "1rem",
+                        marginLeft: "0.7rem",
+                        textDecoration: "none",
+                      }}
+                      href={url}
+                      target="_blank"
+                    >
+                      {url}
+                    </a>
+                  </span>
+                )}
               </motion.span>
               <br />
               <motion.span
