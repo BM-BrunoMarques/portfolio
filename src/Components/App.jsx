@@ -111,6 +111,7 @@ function App() {
             }}
             animate={{
               backgroundPosition: ["-5rem 0px", "-5rem 999999px"],
+              filter: "grayscale(100%)",
             }}
           />
           <div

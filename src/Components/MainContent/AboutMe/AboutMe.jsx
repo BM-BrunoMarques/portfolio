@@ -190,7 +190,7 @@ const AboutMe = () => {
                         style={{
                           background: "rgba(74, 66, 66, 0.12)",
                           padding: "5px",
-                          lineHeight: isXs ? "1.40em" : "1.85em",
+                          lineHeight: 1,
                         }}
                       >
                         {myText.firstP.split(" ").map((word, wi) => {
@@ -239,7 +239,7 @@ const AboutMe = () => {
                           style={{
                             background: "rgba(74, 66, 66, 0.12)",
                             padding: " 0 5px",
-                            lineHeight: isXs ? "1.40em" : "1.55em",
+                            lineHeight: 1,
                           }}
                         >
                           {myText.secondP.split(" ").map((word, wi) => {

@@ -204,6 +204,8 @@ const Projects = () => {
           {projects.map((proj, i) => (
             <LazyProject
               key={i}
+              current={i}
+              numOfProjects={projects.length}
               width={proj.width}
               height={proj.height}
               title={proj.title}

@@ -11,14 +11,14 @@ import ddbc from "../mp4/ddbc.mp4";
 import { isMobileSafari } from "react-device-detect";
 
 const LazyProject = ({ width, height, src, title, description, ...rest }) => {
+  const { current, numOfProjects } = rest;
   const wrapper = useRef();
   const [hasShown, setHasShown] = useState(false);
   const theme = useTheme();
   const videoPlayer = useRef();
+  const isXs = useMediaQuery(theme.breakpoints.down("sm"));
 
   const [isPlay, setIsPlay] = useState(false);
-
-  const isXs = useMediaQuery(theme.breakpoints.down("sm"));
 
   const { ref, inView, entry } = useInView({
     threshold: [0.2, 0.4],
@@ -57,6 +57,7 @@ const LazyProject = ({ width, height, src, title, description, ...rest }) => {
     // }
     setIsPlay(inView);
   }, [inView]);
+  console.log(current, numOfProjects);
 
   return (
     <motion.div
@@ -66,9 +67,10 @@ const LazyProject = ({ width, height, src, title, description, ...rest }) => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        marginBottom: !isXs ? "150px" : "130px",
+        marginBottom: current + 1 == numOfProjects ? "-20rem" : "14rem",
         minHeight: !isXs ? "530px" : "100px",
         flexDirection: "column",
+        minHeight: "60vh",
       }}
       variants={variants}
     >

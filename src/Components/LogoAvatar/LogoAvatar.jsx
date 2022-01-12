@@ -11,13 +11,14 @@ const LogoAvatar = () => {
   const canvasRef = useRef(null);
   const theme = useTheme();
   const isSmall = useMediaQuery(theme.breakpoints.down("sm"));
+  const isXs = useMediaQuery(theme.breakpoints.down("xs"));
   const screen1080p = useMediaQuery("(max-width:1920px)");
 
   const useStyles = makeStyles({
     root: {
       display: "flex",
       // width: "90%",
-      height: "60vh",
+      height: !isSmall ? "60vh" : "75vh",
       // overflow: "hidden",
       justifyContent: "center",
       boxShadow: "0 0 89px 0px black",
@@ -30,12 +31,16 @@ const LogoAvatar = () => {
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      background: "rgba(0, 0, 0, 0.7)",
+      background: "rgba(0, 0, 0, 0.4)",
       width: "94%",
     },
     canvas: {
       padding: "10px",
       maxWidth: "20rem",
+      backgroundColor: "#00000085",
+      borderRadius: "50%",
+      border: "5px solid #ffffff5c",
+      width: !isSmall ? "100%" : "80%",
     },
   });
 
