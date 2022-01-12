@@ -31,16 +31,17 @@ const LogoAvatar = () => {
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      background: "rgba(0, 0, 0, 0.4)",
       width: "94%",
     },
     canvas: {
       padding: "10px",
       maxWidth: "20rem",
       backgroundColor: "#00000085",
-      borderRadius: "50%",
+      borderRadius: "38% 0 38%",
       border: "5px solid #ffffff5c",
       width: !isSmall ? "100%" : "80%",
+      background: "#00000080",
+      boxShadow: "0px 1px 400px 400px #000000ad",
     },
   });
 
