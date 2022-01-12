@@ -16,7 +16,6 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import MenuIcon from "@material-ui/icons/Menu";
 
-
 const NavMenus = ({ smallerWindow }) => {
   const theme = useTheme();
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -72,8 +71,10 @@ const NavMenus = ({ smallerWindow }) => {
         textAnchor="middle"
         style={{
           position: "absolute",
-          marginLeft: smallerWindow ? "-11%" : "2%",
           fontSize: smallerWindow ? "1.4em" : "2em",
+          background: "#00000061",
+          padding: "0 1rem",
+          borderRadius: "10%",
         }}
       >
         {isSmUp ? (
@@ -82,6 +83,7 @@ const NavMenus = ({ smallerWindow }) => {
               display: "flex",
               flexDirection: "column",
               lineHeight: "1.8em",
+              fontWeight: 600,
             }}
           >
             <Link className="about" href="#aboutMe" style={{ color: "#FFF" }}>

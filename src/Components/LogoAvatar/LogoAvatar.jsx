@@ -17,17 +17,25 @@ const LogoAvatar = () => {
     root: {
       display: "flex",
       // width: "90%",
-      height: !screen1080p ? "430px" : "330px",
+      height: "60vh",
       // overflow: "hidden",
       justifyContent: "center",
       boxShadow: "0 0 89px 0px black",
-      borderTop: "1px solid #0f0f0f",
       padding: "30px",
     },
+    wrapper: {
+      borderRadius: "3%",
+      border: "1px solid rgb(255, 255, 255)",
+      boxShadow: "rgb(0 0 0) 0px 0px 0px 400px",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      background: "rgba(0, 0, 0, 0.7)",
+      width: "94%",
+    },
     canvas: {
-      background: "rgba(0, 0, 0, 0.8)",
       padding: "10px",
-      width: isSafari ? '300px' : ''
+      maxWidth: "20rem",
     },
   });
 
@@ -69,17 +77,14 @@ const LogoAvatar = () => {
         className={classes.root}
         style={{ overflow: "hidden", width: "100%" }}
       >
-        <canvas
-          style={{
-            borderRadius: "100%",
-            border: "1px solid #fff",
-            boxShadow: "0 0 0 400px #000",
-          }}
-          width={400}
-          height={400}
-          className={classes.canvas}
-          ref={canvasRef}
-        />
+        <div className={classes.wrapper}>
+          <canvas
+            width={200}
+            height={200}
+            className={classes.canvas}
+            ref={canvasRef}
+          />
+        </div>
       </div>
     </>
   );

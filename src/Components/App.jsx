@@ -11,16 +11,7 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import NavMenus from "./NavMenus/NavMenus";
 import SocialLinks from "./SocialLinks/SocialLinks";
 import { isMobile } from "react-device-detect";
-
-const CustomBackground = styled("div")({
-  backgroundImage: "radial-gradient(#FFF 1px, #000 1px)",
-  backgroundSize: "30px 30px",
-  width: "90%",
-  top: 0,
-  height: "100%",
-  position: "absolute",
-  zIndex: -1,
-});
+import bgImg from "../imgs/bG-Letters.webp";
 
 //this will reset scroll on refreshes
 window.onbeforeunload = function () {
@@ -30,11 +21,21 @@ window.onbeforeunload = function () {
 function App() {
   const theme = useTheme();
   const isSmDo = useMediaQuery(theme.breakpoints.down("sm"));
-  const isSmUp = useMediaQuery(theme.breakpoints.up("md"));
+  const isXs = useMediaQuery(theme.breakpoints.down("xs"));
+  const isMdDo = useMediaQuery(theme.breakpoints.down("md"));
+  const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
   const deskTopMenus = useMediaQuery("(min-width:1500px)");
 
-  const isXs = useMediaQuery(theme.breakpoints.down("xs"));
-  const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
+  const CustomBackground = styled("div")({
+    backgroundImage: `url(${bgImg})`,
+    backgroundSize: isMdDo ? "240% auto" : "190% auto",
+    width: "90%",
+    top: 0,
+    height: "100%",
+    position: "absolute",
+    zIndex: -1,
+  });
+
   const [hasLoaded, setHasLoaded] = useState(false);
 
   const useStyles = makeStyles({
@@ -98,20 +99,28 @@ function App() {
             right: "7px",
             top: !isXs ? "30px" : "300px",
             width: "100%",
+            overflow: "hidden",
           }}
         >
           <CustomBackground
             component={motion.div}
             transition={{
-              duration: 30,
+              duration: 10000,
               repeat: Infinity,
               ease: "linear",
             }}
             animate={{
-              backgroundPosition: ["0 10px", "0 1000px"],
+              backgroundPosition: ["-5rem 0px", "-5rem 999999px"],
             }}
           />
-          <div style={{ width: "90%", display: "flex", alignItems: "center" }}>
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              alignItems: "center",
+              boxShadow: "rgb(0 0 0) 0px 0px 0px 1200px",
+            }}
+          >
             <NavMenus smallerWindow={!deskTopMenus} />
             <LogoAvatar />
             <SocialLinks smallerWindow={!deskTopMenus} />
