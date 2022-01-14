@@ -106,12 +106,10 @@ const LazyProject = ({
                 <span>{title}</span>
                 {url && (
                   <span>
-                    link:{" "}
                     <a
                       style={{
                         color: "bisque",
                         fontSize: "1rem",
-                        marginLeft: "0.7rem",
                         textDecoration: "none",
                       }}
                       href={url}

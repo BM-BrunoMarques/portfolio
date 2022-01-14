@@ -168,11 +168,11 @@ const Projects = () => {
   const isDoMd = useMediaQuery(theme.breakpoints.down("md"));
 
   const { scrollY } = useViewportScroll();
-  const y1 = useTransform(scrollY, [0, 200, 400], [0, 300, 400]);
+  const y1 = useTransform(scrollY, [0, 150, 400], [0, 200, 280]);
 
   const yScroll = useSpring(y1, {
-    stiffness: 200,
-    damping: 90,
+    stiffness: 30,
+    damping: 30
   });
 
   const useStyles = makeStyles({

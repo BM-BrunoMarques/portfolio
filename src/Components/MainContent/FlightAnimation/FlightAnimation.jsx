@@ -48,7 +48,7 @@ const FlightAnimation = () => {
   const end = useRef();
   const endText = useRef();
 
-  const y1 = useTransform(scrollY, [0, 200, 400], [0, 300, 400]);
+  const y1 = useTransform(scrollY, [0, 150, 400], [0, 200, 280]);
   const svgPathY = useTransform(scrollYProgress, [0, 0.02, 0.05], [0, 0.5, 1]);
   const planeRotation = useTransform(
     svgPathY,
@@ -57,8 +57,7 @@ const FlightAnimation = () => {
   );
 
   const yScroll = useSpring(y1, {
-    stiffness: 200,
-    damping: 90,
+    stiffness: 30,
   });
 
   useEffect(() => {

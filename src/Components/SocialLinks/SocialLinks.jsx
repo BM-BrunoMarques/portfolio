@@ -8,7 +8,7 @@ import GitHubIcon from "@material-ui/icons/GitHub";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import IconButton from "@material-ui/core/IconButton";
 import DescriptionIcon from "@material-ui/icons/Description";
-import resume from "./resume/Bruno_Marques.pdf";
+import resume from "./resume/Bruno-Marques-resume.pdf";
 import Button from "@material-ui/core/Button";
 import { withStyles } from "@material-ui/core/styles";
 import Menu from "@material-ui/core/Menu";

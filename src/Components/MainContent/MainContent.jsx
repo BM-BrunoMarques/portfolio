@@ -13,6 +13,7 @@ import { isMobile } from "react-device-detect";
 
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import zIndex from "@material-ui/core/styles/zIndex";
 
 const MainContent = () => {
   const theme = useTheme();

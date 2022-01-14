@@ -89,9 +89,9 @@ const AboutMe = () => {
     hello: "Hi!",
     greeting: "I'm Bruno Marques",
     firstP:
-      "My name is Bruno Marques and I am a passionate Frontend Developer with over 4 years of programming experience.",
+      "My name is Bruno Marques and I am a passionate Frontend Developer with over 5 years of programming experience.",
     secondP:
-      "I am always eager to learn and improve and I strongly believe that everything can be accomplished through hard work and perseverance. I am easy going, communicative, determined and would never decline an invitation to time travel and see all the cool bands!",
+      "Originally from Portugal, currently living in California! I am always eager to learn and improve and I strongly believe that everything can be accomplished through hard work and perseverance. I am easy going, communicative, determined and on my free time I like to exercise, play video games and binge-watch the whole Harry Potter movies whenever the time is right",
   };
 
   const theme = useTheme();
@@ -115,8 +115,9 @@ const AboutMe = () => {
   const y1 = useTransform(scrollY, [0, 150, 400], [0, 200, 280]);
 
   const yScroll = useSpring(y1, {
-    stiffness: 200,
-    damping: 90,
+    stiffness: 30,
+    // stiffness: 1,
+    // damping: 90,
   });
 
   return (
@@ -134,7 +135,7 @@ const AboutMe = () => {
               style={{
                 position: "relative",
                 overflow: "hidden",
-                marginTop: !screen1080p ? "30px" : "5px",
+                marginTop: !screen1080p ? "10px" : "5px",
               }}
             >
               <motion.div
